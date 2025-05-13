@@ -1,0 +1,16 @@
+---
+- hosts: linux
+  tasks:
+    - block:
+        - name: update package
+          ansible.builtin.apt:
+            update_cache: true
+
+        - name: install nginx on our lan
+          ansible.builtin.apt:
+            name: nginx
+            state: present
+            
+          
+        
+        

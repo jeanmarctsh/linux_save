@@ -1,0 +1,15 @@
+---
+- name: create user and password on linux system
+  hosts: linux
+  #become: true
+  vars:
+    username: marcelo
+    password: "{{  'test@@yes.!' | password_hash('sha512') }}"
+  
+  tasks:
+    - name: s'assurer que {{ username }}  existe 
+      ansible.builtin.user:
+        name: "{{ username }}"
+        password: "{{ password }}"
+        update_password: on_create
+    

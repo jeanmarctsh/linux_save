@@ -1,0 +1,11 @@
+---
+  - name: ping sur les machines linux
+    hosts: linux
+    #become: true
+    tasks:
+    - name: tester la connectivité 
+      ansible.builtin.ping:
+        
+    - name:
+      ansible.builtin.debug:
+        msg: ping effectué avec succès

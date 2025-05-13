@@ -1,0 +1,14 @@
+---
+- name: install vlc on differentes linux_pc
+  hosts: linux
+  #gather_facts: true
+  #become: yes
+  #remote_user: marcojm
+  #become_method: su
+  tasks:
+        
+    - name: install vlc with apt
+      apt:
+        name: vlc
+        state: latest
+      when: ansible_distribution == "Ubuntu"

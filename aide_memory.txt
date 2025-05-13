@@ -1,0 +1,24 @@
+--- 
+- name: installation nginx sur les machines clientes linux
+  hosts: pc_linux
+  become: true
+  vars:
+    message: installation terminé avec succès
+
+
+  tasks:
+    - name: update system with apt 
+      ansible.builtin.apt:
+        update_cache: yes
+    
+    - name: install nginx 
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        debug:
+          msg: "{{ message }}"
+
+    - name: ensure that nginx is started automaticaly
+      ansible.builtin.service:
+        name: nginx
+        state: started 

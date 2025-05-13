@@ -1,0 +1,33 @@
+--- 
+- name: install apache2 with check_up
+  hosts: 127.0.0.1
+  #become: true
+  gather_facts: true
+
+  tasks:
+    - name: check if apache2 is already istalled
+      ansible.builtin.shell:
+        dpkg -l | grep -w apache2
+      register: apache2_installed
+      failed_when: false
+      changed_when: false 
+    
+
+    - name: installation et retour arrière en cas d'echec
+      block: 
+        - name: install apache2
+          ansible.builtin.apt:
+            name: apache2
+            state: present
+          when: apache2_installed == ""
+      rescue:
+        - name: diseable apache2 when failed 
+          ansible.builtin.apt:
+            name: apache2
+            state: absent
+
+        - name: msg d'echec 
+
+          ansible.builtin.fail:
+            msg: installation failed. process stopped            
+
