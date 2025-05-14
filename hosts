@@ -1,0 +1,8 @@
+[linux]
+linux1 ansible_host=192.168.9.122 ansible_user=juan   
+linux2 ansible_host=192.168.9.123 ansible_user=marco
+
+
+[linux:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_port=22
