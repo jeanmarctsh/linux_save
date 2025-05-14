@@ -1,0 +1,3 @@
+rajout volume 
+rajout du type bind_mount
+faut-il créer un réseau? pour communiquer avec les autres? (MP/MV/cont?)
