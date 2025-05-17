@@ -9,3 +9,7 @@
     - name:
       ansible.builtin.debug:
         msg: ping effectué avec succès
+
+
+
+        ### ansible-playbook -i projet/inventory/test/hosts projet/playbook/ping.yml --check = vérification avant exécution
